@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Técnica de Adopción Colombia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #002d55;
+            --secondary-blue: #001a33;
+            --accent-orange: #f59e0b; /* Naranja/Ámbar vibrante */
+            --soft-orange: #fff7ed;
+            --light-bg: #f3f4f6;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: #1f2937;
+        }
+
+        .header-gradient {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            border-bottom: 4px solid var(--accent-orange);
+        }
+
+        .step-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-left: 5px solid #d1d5db;
+        }
+
+        .step-card.active {
+            border-left-color: var(--primary-blue);
+            background: white;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-card.completed {
+            border-left-color: var(--accent-orange);
+            background-color: var(--soft-orange);
+        }
+
+        .progress-bar {
+            height: 12px;
+            background-color: #e5e7eb;
+            border-radius: 999px;
+            overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-orange), #fbbf24);
+            transition: width 0.6s ease;
+        }
+
+        .btn-route {
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-route.active {
+            background-color: var(--accent-orange);
+            color: var(--primary-blue);
+            font-weight: 800;
+            border-color: white;
+        }
+
+        .checkbox-ui {
+            width: 28px;
+            height: 28px;
+            border: 2px solid #9ca3af;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .completed .checkbox-ui {
+            background-color: var(--accent-orange);
+            border-color: var(--accent-orange);
+            color: white;
+        }
+
+        .badge-law {
+            background: rgba(0, 45, 85, 0.1);
+            color: var(--primary-blue);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .info-panel {
+            border-top: 4px solid var(--accent-orange);
+        }
+    </style>
+</head>
+<body class="pb-24">
+
+    <!-- Header -->
+    <header class="header-gradient text-white pt-12 pb-16 px-6 shadow-2xl">
+        <div class="max-w-5xl mx-auto text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">Proceso de Adopción en Colombia</h1>
+            <p class="text-blue-100 text-lg max-w-2xl mx-auto mb-10 opacity-90">
+                Guía interactiva paso a paso bajo el Lineamiento Técnico Administrativo (Resolución 0239 de 2021).
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-4">
+                <button onclick="setRoute('nacional')" id="btn-nacional" class="btn-route active px-8 py-3 rounded-xl font-bold border-2 border-white">
+                    <i class="fas fa-home mr-2"></i> Trámite Nacional
+                </button>
+                <button onclick="setRoute('internacional')" id="btn-internacional" class="btn-route px-8 py-3 rounded-xl font-bold border-2 border-white text-white hover:bg-white/10">
+                    <i class="fas fa-globe-americas mr-2"></i> Trámite Internacional
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 -mt-10">
+        
+        <!-- Progress Tracker -->
+        <div class="bg-white rounded-2xl p-6 shadow-xl mb-10 border border-gray-100">
+            <div class="flex justify-between items-end mb-3">
+                <div>
+                    <h2 class="text-sm font-bold text-gray-500 uppercase tracking-widest">Estado del Trámite</h2>
+                    <p id="route-title" class="text-2xl font-black text-blue-900">Ruta Nacional Indeterminada</p>
+                </div>
+                <div class="text-right">
+                    <span id="progress-text" class="text-3xl font-black text-amber-500">0%</span>
+                </div>
+            </div>
+            <div class="progress-bar">
+                <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <!-- Consultation Panels -->
+        <div class="grid lg:grid-cols-3 gap-6 mb-12">
+            <div class="info-panel bg-white p-6 rounded-xl shadow-md">
+                <div class="flex items-center mb-4 text-amber-600">
+                    <i class="fas fa-user-shield text-2xl mr-3"></i>
+                    <h3 class="font-bold text-lg text-blue-900">Idoneidad Integral</h3>
+                </div>
+                <div class="space-y-3 text-sm text-gray-600">
+                    <p><strong>Mental:</strong> Evaluación de salud mental y capacidad vincular (apego seguro).</p>
+                    <p><strong>Física:</strong> Capacidad motriz y salud para proteger al menor hasta su mayoría de edad.</p>
+                    <p><strong>Social:</strong> Red de apoyo familiar y condiciones habitacionales dignas.</p>
+                </div>
+            </div>
+
+            <div class="info-panel bg-white p-6 rounded-xl shadow-md">
+                <div class="flex items-center mb-4 text-amber-600">
+                    <i class="fas fa-hourglass-half text-2xl mr-3"></i>
+                    <h3 class="font-bold text-lg text-blue-900">Rangos de Edad</h3>
+                </div>
+                <div class="space-y-3 text-sm text-gray-600">
+                    <div class="flex justify-between border-b pb-1"><span>25 a 50 años</span> <span class="font-bold">NNA 0-5 años</span></div>
+                    <div class="flex justify-between border-b pb-1"><span>51 a 54 años</span> <span class="font-bold">NNA 6-9 años</span></div>
+                    <div class="flex justify-between border-b pb-1"><span>55+ años</span> <span class="font-bold">NNA 10+ / CNE</span></div>
+                </div>
+            </div>
+
+            <div class="info-panel bg-white p-6 rounded-xl shadow-md">
+                <div class="flex items-center mb-4 text-amber-600">
+                    <i class="fas fa-balance-scale text-2xl mr-3"></i>
+                    <h3 class="font-bold text-lg text-blue-900">Marco Legal</h3>
+                </div>
+                <div class="space-y-2 text-sm text-gray-600">
+                    <p><i class="fas fa-check text-green-500 mr-2"></i>Ley 1098 de 2006 (Código Infancia)</p>
+                    <p><i class="fas fa-check text-green-500 mr-2"></i>Sentencia C-683 de 2015 (Igualdad)</p>
+                    <p><i class="fas fa-check text-green-500 mr-2"></i>Convenio de La Haya 1993</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Checklist -->
+        <div id="steps-container" class="space-y-6">
+            <!-- Dynamically loaded -->
+        </div>
+
+    </main>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="fixed inset-0 bg-blue-900/80 backdrop-blur-sm flex items-center justify-center hidden z-50 p-4">
+        <div class="bg-white rounded-3xl p-10 max-w-md w-full text-center shadow-2xl border-t-8 border-amber-500">
+            <div class="w-24 h-24 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl">
+                <i class="fas fa-certificate"></i>
+            </div>
+            <h2 class="text-3xl font-black text-blue-900 mb-4">¡Adopción Decretada!</h2>
+            <p class="text-gray-600 mb-8 text-lg">La sentencia judicial ha quedado en firme. El proceso administrativo ha concluido exitosamente y el nuevo registro civil ha sido emitido.</p>
+            <button onclick="closeModal()" class="w-full py-4 bg-blue-900 text-white rounded-2xl font-bold text-xl hover:bg-blue-800 transition shadow-lg">Finalizar Guía</button>
+        </div>
+    </div>
+
+    <script>
+        const stepsData = {
+            nacional: [
+                { 
+                    title: "Charla Legal y Psicosocial", 
+                    desc: "Sesión informativa obligatoria dictada por el Defensor de Familia del ICBF o una Institución Autorizada (IAPA). Se explican las implicaciones jurídicas de la adopción, los perfiles de los niños en adoptabilidad y se resuelven dudas sobre la idoneidad. La asistencia genera una constancia válida por 6 meses.",
+                    parties: "Solicitantes, Defensor de Familia, Equipo Técnico.",
+                    law: "Lineamiento LM16.P.1",
+                    icon: "fas fa-users"
+                },
+                { 
+                    title: "Radicación de Documentos", 
+                    desc: "Los solicitantes entregan la carpeta física o digital con: Registro civil, certificados de salud física y mental, certificaciones laborales/ingresos, y antecedentes penales nacionales e internacionales. El equipo del ICBF revisa que la documentación esté completa para abrir el expediente en el Sistema SIM.",
+                    parties: "Solicitantes, Área Administrativa ICBF.",
+                    law: "CIA Art. 124 Num. 7",
+                    icon: "fas fa-file-signature"
+                },
+                { 
+                    title: "Análisis Documental y Admisión", 
+                    desc: "El equipo jurídico analiza si los solicitantes cumplen los requisitos de ley (edad mínima 25 años, diferencia de 15 años con el menor, etc.). Se emite un auto de admisión o inadmisión. Si se admite, se programa la preparación.",
+                    parties: "Abogado de la Defensoría.",
+                    law: "Ley 1437 de 2011",
+                    icon: "fas fa-search"
+                },
+                { 
+                    title: "Talleres de Preparación (3 Sesiones)", 
+                    desc: "Espacios pedagógicos donde se trabaja el 'Hijo Imaginario', el manejo del trauma complejo del desarrollo, el duelo por infertilidad y la construcción de la identidad. Es obligatorio asistir a las tres sesiones para pasar a la evaluación.",
+                    parties: "Solicitantes, Psicólogos, Trabajadores Sociales.",
+                    law: "Lineamiento LM16.P.14",
+                    icon: "fas fa-graduation-cap"
+                },
+                { 
+                    title: "Evaluación Integral de Idoneidad", 
+                    desc: "Fase crítica que incluye al menos 3 entrevistas profundas con psicología y trabajo social. Se realiza una visita domiciliaria obligatoria para verificar condiciones de habitabilidad, seguridad y red de apoyo familiar. Se aplican pruebas psicotécnicas.",
+                    parties: "Equipo Interdisciplinario ICBF/IAPA.",
+                    law: "Sentencia C-804/09",
+                    icon: "fas fa-clipboard-check"
+                },
+                { 
+                    title: "Comité de Adopciones (Decisión)", 
+                    desc: "El Comité (integrado por regionales del ICBF) estudia los informes técnicos y decide si otorga el Certificado de Idoneidad. Si es aprobado, la familia ingresa oficialmente a la Lista de Espera nacional.",
+                    parties: "Comité Regional de Adopciones.",
+                    law: "CIA Art. 73",
+                    icon: "fas fa-gavel"
+                },
+                { 
+                    title: "Asignación del NNA", 
+                    desc: "El Comité busca la familia idónea para un niño específico (Matching). Se presenta la historia de vida del niño a los solicitantes, quienes tienen 10 días para aceptar o declinar la asignación de forma motivada.",
+                    parties: "Comité de Adopciones, Solicitantes.",
+                    law: "Interés Superior del Menor",
+                    icon: "fas fa-child"
+                },
+                { 
+                    title: "Encuentro e Integración", 
+                    desc: "Preparación del niño y los padres. Se realizan sesiones de conocimiento mutuo seguidas de una convivencia supervisada de 5 a 15 días. Si el vínculo es positivo, se emite la Constancia de Integración.",
+                    parties: "NNA, Solicitantes, Equipo Psicosocial.",
+                    law: "Lineamiento Técnico Administrativo",
+                    icon: "fas fa-heart"
+                },
+                { 
+                    title: "Fase Judicial (Demanda)", 
+                    desc: "Con la constancia de integración, se presenta la demanda de adopción ante un Juez de Familia. Esta etapa requiere abogado y busca la declaración formal e irrevocable de la paternidad/maternidad.",
+                    parties: "Juez de Familia, Abogado, Ministerio Público.",
+                    law: "CIA Art. 124",
+                    icon: "fas fa-balance-scale"
+                }
+            ],
+            internacional: [
+                { 
+                    title: "Vínculo con Organismo Acreditado (OAA)", 
+                    desc: "Los solicitantes residentes en el extranjero deben contactar a un Organismo Acreditado (como agencias en España, USA, Italia) que tenga convenio vigente con el ICBF. El OAA realiza los estudios de idoneidad en el país de origen y sirve de intermediario legal y administrativo durante todo el proceso.",
+                    parties: "Solicitantes, Organismo Acreditado (OAA), Autoridad Central Extranjera.",
+                    law: "Convenio de La Haya 1993",
+                    icon: "fas fa-building"
+                },
+                { 
+                    title: "Remisión y Refrendación", 
+                    desc: "El expediente extranjero (apostillado y traducido) llega a la Subdirección de Adopciones del ICBF en Bogotá. Colombia analiza los informes para validar si la familia cumple con los estándares técnicos nacionales. Si es conforme, se emite la Refrendación de Idoneidad.",
+                    parties: "Subdirección de Adopciones ICBF.",
+                    law: "CIA Art. 71",
+                    icon: "fas fa-file-import"
+                },
+                { 
+                    title: "Autorización de Ingreso (País Receptor)", 
+                    desc: "El gobierno del país donde residen los adoptantes debe certificar que el niño colombiano podrá ingresar legalmente y que obtendrá la nacionalidad de sus padres. Este documento es requisito previo para la asignación.",
+                    parties: "Autoridad Migratoria Extranjera.",
+                    law: "Convenio Haya Art. 5 y 15",
+                    icon: "fas fa-passport"
+                },
+                { 
+                    title: "Asignación Internacional", 
+                    desc: "Dada la naturaleza subsidiaria, se prioriza la asignación de niños con Características y Necesidades Especiales (CNE): mayores de 10 años, grupos de hermanos o niños con condiciones de salud crónicas.",
+                    parties: "Comité de Adopciones ICBF.",
+                    law: "Principio de Subsidiariedad",
+                    icon: "fas fa-globe"
+                },
+                { 
+                    title: "Viaje e Integración en Colombia", 
+                    desc: "La familia debe viajar a Colombia por un periodo de 4 a 8 semanas. Durante este tiempo conviven con el menor bajo supervisión constante de la Defensoría de Familia para asegurar que el proceso de adaptación sea exitoso antes de ir al juez.",
+                    parties: "Adoptantes, NNA, Equipo ICBF.",
+                    law: "Lineamiento Administrativo v4",
+                    icon: "fas fa-plane"
+                },
+                { 
+                    title: "Sentencia y Certificado de Conformidad", 
+                    desc: "Tras la sentencia del juez colombiano, el ICBF emite el 'Certificado de Conformidad', el cual garantiza ante la comunidad internacional que la adopción se realizó protegiendo los derechos del niño según el tratado de La Haya.",
+                    parties: "Juez, ICBF, Adoptantes.",
+                    law: "Convenio Haya Art. 23",
+                    icon: "fas fa-award"
+                }
+            ]
+        };
+
+        let currentRoute = 'nacional';
+        let completedSteps = [];
+
+        function setRoute(route) {
+            currentRoute = route;
+            completedSteps = [];
+            
+            document.getElementById('btn-nacional').classList.toggle('active', route === 'nacional');
+            document.getElementById('btn-internacional').classList.toggle('active', route === 'internacional');
+            document.getElementById('route-title').innerText = route === 'nacional' ? 'Ruta Nacional Indeterminada' : 'Ruta Internacional (Subsidiaria)';
+            
+            renderSteps();
+            updateProgress();
+        }
+
+        function renderSteps() {
+            const container = document.getElementById('steps-container');
+            container.innerHTML = '';
+            
+            stepsData[currentRoute].forEach((step, index) => {
+                const isCompleted = completedSteps.includes(index);
+                const isActive = index === 0 || completedSteps.includes(index - 1);
+                
+                const card = document.createElement('div');
+                card.className = `step-card p-6 md:p-8 rounded-2xl ${isCompleted ? 'completed shadow-sm' : isActive ? 'active shadow-lg' : 'opacity-40 grayscale pointer-events-none'}`;
+                
+                card.innerHTML = `
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="flex-shrink-0 flex md:flex-col items-center gap-4">
+                            <div class="checkbox-ui" onclick="toggleStep(${index})">
+                                ${isCompleted ? '<i class="fas fa-check"></i>' : ''}
+                            </div>
+                            <div class="text-3xl text-blue-900/20">
+                                <i class="${step.icon}"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex flex-wrap items-center gap-3 mb-3">
+                                <span class="badge-law">${step.law}</span>
+                                <h3 class="text-xl font-black text-blue-900">Paso ${index + 1}: ${step.title}</h3>
+                            </div>
+                            <p class="text-gray-700 leading-relaxed mb-4 text-sm md:text-base">${step.desc}</p>
+                            <div class="bg-white/50 p-3 rounded-lg border border-blue-100 mb-4">
+                                <p class="text-xs font-bold text-blue-800 uppercase tracking-tighter">Partes involucradas:</p>
+                                <p class="text-sm text-blue-900/70">${step.parties}</p>
+                            </div>
+                            ${isActive && !isCompleted ? `
+                                <button onclick="toggleStep(${index})" class="bg-amber-500 text-blue-900 font-black px-6 py-2 rounded-xl hover:bg-amber-400 transition transform hover:scale-105 active:scale-95">
+                                    MARCAR COMO COMPLETADO
+                                </button>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function toggleStep(index) {
+            if (completedSteps.includes(index)) {
+                completedSteps = completedSteps.filter(s => s < index);
+            } else {
+                completedSteps.push(index);
+            }
+            renderSteps();
+            updateProgress();
+
+            if (completedSteps.length === stepsData[currentRoute].length) {
+                setTimeout(() => document.getElementById('success-modal').classList.remove('hidden'), 500);
+            }
+        }
+
+        function updateProgress() {
+            const total = stepsData[currentRoute].length;
+            const current = completedSteps.length;
+            const percentage = Math.round((current / total) * 100);
+            
+            document.getElementById('progress-fill').style.width = `${percentage}%`;
+            document.getElementById('progress-text').innerText = `${percentage}%`;
+        }
+
+        function closeModal() {
+            document.getElementById('success-modal').classList.add('hidden');
+        }
+
+        window.onload = renderSteps;
+    </script>
+</body>
+</html>
