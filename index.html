@@ -258,11 +258,14 @@
         });
 
         // 4. Utilidades de UI
-        const switchView = (viewId) => {
-            const views = ['view-loading', 'view-home', 'view-admin-login', 'view-player-join', 'view-admin-panel', 'view-lobby', 'view-question', 'view-leaderboard', 'view-final'];
-            views.forEach(v => document.getElementById(v).classList.add('hidden'));
-            document.getElementById(viewId).classList.remove('hidden');
-        };
+        const firebaseConfig = {
+  apiKey: "AIzaSyBO9OXrVV-jmiWDR7N6G92dcohmQe-r4lE",
+  authDomain: "carhoot-583f4.firebaseapp.com",
+  projectId: "carhoot-583f4",
+  storageBucket: "carhoot-583f4.firebasestorage.app",
+  messagingSenderId: "457350426512",
+  appId: "1:457350426512:web:11048857807595c793cd15"
+};
 
         // 5. Configurar Listeners en Tiempo Real de Firestore
         const setupRealtimeListeners = () => {
