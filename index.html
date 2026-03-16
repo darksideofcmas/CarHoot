@@ -3,637 +3,643 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CarHoot!</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Presentación: Cesión de derechos herenciales</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* Estilos base inspirados en el ecosistema Apple */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f5f5f7;
-            color: #1d1d1f;
-        }
-        .apple-card {
-            background: #ffffff;
-            border-radius: 1.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-        .apple-btn-primary {
-            background-color: #0071e3;
-            color: white;
-            border-radius: 9999px;
-            transition: all 0.2s ease;
-        }
-        .apple-btn-primary:hover { background-color: #0077ED; transform: scale(1.02); }
-        .apple-btn-primary:active { transform: scale(0.98); }
-        
-        .apple-btn-secondary {
-            background-color: #e8e8ed;
-            color: #1d1d1f;
-            border-radius: 9999px;
-            transition: all 0.2s ease;
-        }
-        .apple-btn-secondary:hover { background-color: #d2d2d7; }
-        
-        .apple-input {
-            border: 1px solid #d2d2d7;
-            border-radius: 0.75rem;
-            padding: 0.75rem 1rem;
-            outline: none;
-            transition: border-color 0.2s ease;
-        }
-        .apple-input:focus { border-color: #0071e3; box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.1); }
+/* 1. SETUP & MAC AESTHETIC WITH HOVER ANIMATIONS */
 
-        /* Ocultar elementos */
-        .hidden { display: none !important; }
-        
-        /* Animaciones suaves */
-        .fade-in { animation: fadeIn 0.4s ease-in-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #e5e5ea;
+  display: grid;
+  gap: 40px;
+  grid-template-columns: 1fr;
+  margin: 0;
+  min-height: 100vh;
+  padding: 40px 0;
+  place-items: center;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #1d1d1f;
+}
+
+/* Base Slide Container */
+.slide-container {
+  align-items: flex-start; 
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  height: 720px;
+  overflow: hidden;
+  padding: 60px 80px;
+  position: relative;
+  width: 1280px;
+}
+
+/* Gradientes para portadas */
+.bg-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+}
+.bg-gradient-warm {
+  background: linear-gradient(135deg, #ffffff 0%, #fff9f5 100%);
+}
+
+.centered-slide {
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-container>* {
+  position: relative;
+  z-index: 1;
+}
+
+/* 2. TYPOGRAPHY & COLORS */
+
+.slide-container h1, .slide-container h2, .slide-container h3 {
+  color: #1d1d1f;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.slide-container p, .slide-container li, .slide-container th, .slide-container td {
+  color: #333336;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.slide-container h1 { font-size: 56px; line-height: 1.1; text-align: center; margin-bottom: 20px; }
+.slide-title { font-size: 38px; font-weight: 600; margin-bottom: 50px; margin-top: 0; text-align: left; width: 100%; color: #1d1d1f; }
+.slide-container h3 { font-size: 22px; margin-bottom: 10px; color: #1d1d1f; }
+.slide-container p, .slide-container li { font-size: 18px; } 
+.slide-container .subtitle { font-size: 22px; color: #515154; text-align: center; max-width: 900px; margin: 0 auto; }
+
+/* Acentos de color */
+.accent-blue { color: #007aff; font-weight: 600; }
+.accent-red { color: #ff3b30; font-weight: 600; }
+.accent-orange { color: #ff9500; font-weight: 600; }
+.accent-purple { color: #5856d6; font-weight: 600; }
+
+/* CONTENT AREA */
+.content-area {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center; 
+  width: 100%;
+}
+
+/* Cuadro de Advertencia */
+.warning-box {
+  background: #fff5f5;
+  border-left: 6px solid #ff3b30;
+  border-radius: 0 12px 12px 0;
+  padding: 20px 25px;
+  margin-top: 25px;
+  box-shadow: 0 4px 15px rgba(255, 59, 48, 0.08);
+}
+.warning-box p { margin: 0; color: #1d1d1f; font-size: 17px; }
+.warning-box strong { color: #d70015; }
+
+/* 3. LAYOUTS & INTERACTIVE ANIMATIONS */
+
+.title-layout { text-align: center; display: flex; flex-direction: column; justify-content: center; height: 100%; width: 100%; }
+.section-title-layout { align-items: center; display: flex; flex-direction: column; height: 100%; justify-content: center; text-align: center; width: 100%; }
+.section-title-layout h2 { font-size: 54px; margin-bottom: 15px; }
+.section-title-layout p { font-size: 24px; color: #007aff; font-weight: 500; }
+.section-title-layout hr { background: linear-gradient(90deg, #007aff, #5856d6); border: none; height: 5px; margin: 30px auto; width: 100px; border-radius: 3px;}
+
+.two-column { align-items: flex-start; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; width: 100%; }
+
+/* Tarjetas con animación Hover */
+.tiled-content { display: grid; gap: 30px; width: 100%; }
+.grid-2x2 { grid-template-columns: 1fr 1fr; }
+.tile { 
+  background-color: #ffffff; 
+  border-radius: 16px; 
+  border: 1px solid #e5e5ea; 
+  border-top: 4px solid #007aff; 
+  display: flex; 
+  flex-direction: column; 
+  padding: 30px; 
+  text-align: left; 
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.03); 
+}
+.tile:hover { 
+  box-shadow: 0 15px 35px rgba(0, 122, 255, 0.12); 
+  transform: translateY(-6px);
+}
+.tile .icon { font-size: 32px; margin-bottom: 15px; }
+.tile p { margin: 0; }
+
+/* Colores de borde para las tarjetas */
+.tile-blue { border-top-color: #007aff; }
+.tile-blue .icon { color: #007aff; }
+.tile-green { border-top-color: #34c759; }
+.tile-green .icon { color: #34c759; }
+.tile-orange { border-top-color: #ff9500; }
+.tile-orange .icon { color: #ff9500; }
+.tile-red { border-top-color: #ff3b30; }
+.tile-red .icon { color: #ff3b30; }
+.tile-purple { border-top-color: #5856d6; }
+.tile-purple .icon { color: #5856d6; }
+
+/* Bullet Lists */
+.bullet-list ul { list-style: none; margin: 0; padding: 0; }
+.bullet-list li { margin-bottom: 20px; padding-left: 45px; position: relative; }
+.bullet-list i { color: #007aff; font-size: 20px; left: 0; position: absolute; top: 3px; }
+
+/* Tabla */
+.table-layout { width: 100%; background: #ffffff; border-radius: 16px; border: 1px solid #d2d2d7; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+.table-layout table { border-collapse: collapse; width: 100%; }
+.table-layout th, .table-layout td { border-bottom: 1px solid #e5e5ea; padding: 20px 25px; text-align: left; }
+.table-layout th { background-color: #fbfbfd; color: #1d1d1f; font-size: 18px; font-weight: 600; border-bottom: 2px solid #007aff;}
+.table-layout tr:last-child td { border-bottom: none; }
+.table-layout tr:hover td { background-color: #f5f5f7; }
+
+/* Timeline */
+.timeline-layout { 
+  align-items: stretch; 
+  display: flex; 
+  height: 380px;
+  justify-content: space-between; 
+  position: relative; 
+  width: 100%; 
+  margin-top: 20px; 
+}
+.timeline-layout .timeline-line { background: linear-gradient(90deg, #007aff, #34c759); height: 6px; left: 0; position: absolute; top: 50%; transform: translateY(-3px); width: 100%; z-index: 0; border-radius: 3px;}
+.timeline-item { position: relative; text-align: center; width: 23%; }
+.timeline-item::after { background-color: #ffffff; border-radius: 50%; border: 5px solid #007aff; content: ''; height: 26px; left: 50%; position: absolute; top: 50%; transform: translate(-50%, -50%); width: 26px; z-index: 1; transition: all 0.3s ease;}
+.timeline-item:hover::after { transform: translate(-50%, -50%) scale(1.3); background-color: #007aff; }
+
+.timeline-item .content-wrapper { left: 0; position: absolute; width: 100%; background: #ffffff; padding: 20px; border-radius: 14px; border: 1px solid #d2d2d7; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: all 0.3s; }
+.timeline-item:hover .content-wrapper { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,122,255,0.15); border-color: #007aff; }
+.timeline-item:nth-child(odd) .content-wrapper { bottom: 50%; margin-bottom: 30px; border-bottom: 4px solid #007aff;}
+.timeline-item:nth-child(even) .content-wrapper { margin-top: 30px; top: 50%; border-top: 4px solid #007aff;}
+.timeline-item h3 { font-size: 19px; margin-bottom: 8px; color: #007aff; }
+.timeline-item p { font-size: 15px; margin: 0; color: #515154; }
+
+/* Ventanas Mac */
+.mac-split-view { display: flex; gap: 30px; width: 100%; height: 420px; }
+.mac-window { background: #ffffff; border-radius: 12px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); border: 1px solid #d2d2d7; display: flex; flex-direction: column; overflow: hidden; flex: 1; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.mac-window:hover { transform: translateY(-6px); box-shadow: 0 25px 45px rgba(0,0,0,0.15); border-color: #b0b0b5;}
+.mac-titlebar { background: #f5f5f7; height: 40px; border-bottom: 1px solid #d2d2d7; display: flex; align-items: center; padding: 0 16px; position: relative; }
+.mac-buttons { display: flex; gap: 8px; z-index: 2; }
+.mac-buttons span { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+.mac-buttons .close { background: #ff5f56; border: 1px solid #e0443e; }
+.mac-buttons .min { background: #ffbd2e; border: 1px solid #dea123; }
+.mac-buttons .max { background: #27c93f; border: 1px solid #1aab29; }
+.mac-title { position: absolute; width: 100%; text-align: center; left: 0; font-size: 13px; font-weight: 600; color: #515154; pointer-events: none; }
+.mac-content { padding: 25px; display: flex; flex-direction: column; gap: 15px; flex-grow: 1; background: #fafafa; overflow-y: auto; }
+
+/* Estilo específico para incrustar el PDF completo sin padding extra */
+.mac-content.pdf-viewer { padding: 0; overflow: hidden; background: #525659; } 
+
+.contract-snippet { font-family: 'Courier New', Courier, monospace; font-size: 13px; line-height: 1.5; background: #ffffff; border: 1px solid #e5e5ea; padding: 18px; border-radius: 8px; color: #333333; }
+.mac-content p { font-size: 16px; margin: 0; color: #1d1d1f;}
+
     </style>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-center p-4">
+<body>
 
-    <!-- CONTENEDOR PRINCIPAL -->
-    <div id="app-container" class="w-full max-w-2xl apple-card p-8 fade-in relative">
-        
-        <!-- PANTALLA DE CARGA -->
-        <div id="view-loading" class="text-center py-10">
-            <h2 id="loading-text" class="text-xl font-semibold text-gray-500">Conectando al servidor...</h2>
-            <p id="loading-error" class="text-red-500 mt-4 text-sm max-w-md mx-auto"></p>
-        </div>
+<!-- Slide 1: Title_Slide -->
+<div class="slide-container centered-slide bg-gradient" id="slide1">
+    <div class="title-layout">
+        <h1>Cesión de derechos herenciales</h1>
+        <p class="subtitle">Análisis jurídico, procesal y registral sobre la compraventa de derechos hereditarios en el ordenamiento colombiano.</p>
+    </div>
+</div>
 
-        <!-- PANTALLA DE INICIO (Elegir Rol) -->
-        <div id="view-home" class="hidden text-center space-y-6">
-            <h1 class="text-4xl font-bold tracking-tight mb-2">CarHoot!</h1>
-            <p class="text-gray-500 mb-8">Únete a la sesión interactiva</p>
-            
-            <div class="flex flex-col gap-4 max-w-xs mx-auto">
-                <button id="btn-go-player" class="apple-btn-primary py-3 px-6 font-semibold text-lg">Soy Participante</button>
-                <button id="btn-go-admin" class="apple-btn-secondary py-3 px-6 font-semibold">Soy Moderador</button>
+<!-- Slide 2: Section_Title (Parte I) -->
+<div class="slide-container centered-slide" id="slide2">
+    <div class="section-title-layout">
+        <hr>
+        <h2>Parte I: Fundamentación jurídica</h2>
+        <p>Ponente: Crystel</p>
+    </div>
+</div>
+
+<!-- Slide 3: Naturaleza -->
+<div class="slide-container" id="slide3">
+    <h2 class="slide-title">Naturaleza del derecho real de herencia</h2>
+    <div class="content-area">
+        <div class="tiled-content grid-2x2">
+            <div class="tile tile-blue">
+                <div class="icon"><i class="fa-solid fa-layer-group"></i></div>
+                <h3>Universalidad jurídica</h3>
+                <p>El derecho de herencia es un derecho real que recae sobre una abstracción (la masa del causante), no sobre bienes singulares (Art. 665 y 1008 C.C.).</p>
+            </div>
+            <div class="tile tile-purple">
+                <div class="icon"><i class="fa-solid fa-id-badge"></i></div>
+                <h3>Calidad de heredero</h3>
+                <p>La venta de derechos herenciales <em>no transfiere la calidad personal de heredero</em> (Art. 1040 C.C.). Solo se enajenan los efectos patrimoniales.</p>
+            </div>
+            <div class="tile tile-green">
+                <div class="icon"><i class="fa-solid fa-key"></i></div>
+                <h3>Posesión legal</h3>
+                <p>Al ocurrir la delación, la ley confiere a los herederos la posesión legal (Arts. 757 y 1013 C.C.), lo que habilita ceder el derecho a un tercero.</p>
+            </div>
+            <div class="tile tile-orange">
+                <div class="icon"><i class="fa-solid fa-chart-pie"></i></div>
+                <h3>Comunidad herencial</h3>
+                <p>Si hay varios herederos, ninguno posee una propiedad específica material, sino una cuota abstracta (ej. 25%) de toda la universalidad activa y pasiva.</p>
             </div>
         </div>
+    </div>
+</div>
 
-        <!-- PANTALLA DE INGRESO DEL MODERADOR -->
-        <div id="view-admin-login" class="hidden space-y-6">
-            <h2 class="text-2xl font-bold text-center">Acceso de Moderador</h2>
-            <p class="text-center text-gray-500 text-sm">Ingrese su contraseña</p>
-            <div class="flex flex-col gap-4 max-w-xs mx-auto">
-                <input type="password" id="input-admin-pwd" class="apple-input w-full" placeholder="Contraseña">
-                <button id="btn-login-admin" class="apple-btn-primary py-3 px-6 font-semibold">Entrar</button>
-                <button class="btn-back text-sm text-gray-500 hover:text-gray-800">Volver</button>
+<!-- Slide 4: Table (Artículos CC) -->
+<div class="slide-container" id="slide4">
+    <h2 class="slide-title">Marco normativo principal (Código Civil)</h2>
+    <div class="content-area">
+        <div class="table-layout">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Artículo C.C.</th>
+                        <th>Función jurídica en la cesión</th>
+                        <th>Impacto práctico / registral</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong class="accent-blue">Art. 665</strong></td>
+                        <td>Define la herencia como derecho real.</td>
+                        <td>Protege al titular mediante acciones reales.</td>
+                    </tr>
+                    <tr>
+                        <td><strong class="accent-blue">Art. 1857</strong></td>
+                        <td>Perfeccionamiento del contrato.</td>
+                        <td>Exige <span class="accent-red">Escritura Pública</span> para su validez absoluta.</td>
+                    </tr>
+                    <tr>
+                        <td><strong class="accent-blue">Art. 1867</strong></td>
+                        <td>Venta de universalidades.</td>
+                        <td>Permite ceder el patrimonio sin detallar los bienes.</td>
+                    </tr>
+                    <tr>
+                        <td><strong class="accent-blue">Art. 1520</strong></td>
+                        <td>Prohibición de herencia futura.</td>
+                        <td>Sanciona negociar sobre la sucesión de un vivo.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 5: Section_Title (Parte II) -->
+<div class="slide-container centered-slide" id="slide5">
+    <div class="section-title-layout">
+        <hr>
+        <h2>Parte II: Requisitos y modalidades</h2>
+        <p>Ponente: Carlos Mario</p>
+    </div>
+</div>
+
+<!-- Slide 6: Grid_2x2 (Requisitos en Orden Estricto) -->
+<div class="slide-container" id="slide6">
+    <h2 class="slide-title">Requisitos estrictos de validez</h2>
+    <div class="content-area">
+        <div class="tiled-content grid-2x2">
+            <div class="tile tile-blue">
+                <div class="icon"><i class="fa-solid fa-bed-pulse"></i></div>
+                <h3>1. Existencia</h3>
+                <p>Muerte del causante acreditada con <strong>Registro Civil de Defunción</strong> (Art. 1012 C.C.). Evita la nulidad por herencia futura.</p>
+            </div>
+            <div class="tile tile-green">
+                <div class="icon"><i class="fa-solid fa-sitemap"></i></div>
+                <h3>2. Vocación</h3>
+                <p>El cedente debe poseer su legítima <strong>calidad de heredero</strong>, legatario o cónyuge mediante registros civiles.</p>
+            </div>
+            <div class="tile tile-orange">
+                <div class="icon"><i class="fa-solid fa-handshake"></i></div>
+                <h3>3. Consentimiento</h3>
+                <p>Las partes deben ser capaces y emitir un consentimiento libre de vicios (Arts. 1502 y 1508 C.C.).</p>
+            </div>
+            <div class="tile tile-red">
+                <div class="icon"><i class="fa-solid fa-gavel"></i></div>
+                <h3>4. Solemnidad</h3>
+                <p>Requisito sine qua non: la formalidad de elevar el contrato a <strong>Escritura Pública</strong> (Art. 1857 C.C.).</p>
             </div>
         </div>
+    </div>
+</div>
 
-        <!-- PANTALLA DE REGISTRO DE PARTICIPANTE -->
-        <div id="view-player-join" class="hidden space-y-6">
-            <h2 class="text-2xl font-bold text-center">Únete al Quiz</h2>
-            <div class="flex flex-col gap-4 max-w-xs mx-auto">
-                <input type="text" id="input-player-name" class="apple-input w-full" placeholder="Tu nombre completo" maxlength="25">
-                <button id="btn-join-game" class="apple-btn-primary py-3 px-6 font-semibold">Entrar al juego</button>
-                <button class="btn-back text-sm text-gray-500 hover:text-gray-800">Volver</button>
-            </div>
-        </div>
-
-        <!-- PANEL DEL MODERADOR (Gestión) -->
-        <div id="view-admin-panel" class="hidden space-y-6">
-            <div class="flex justify-between items-center border-b pb-4">
-                <h2 class="text-2xl font-bold">Panel de Control</h2>
-                <button id="btn-reset-game" class="text-red-500 text-sm hover:underline">Reiniciar Sesión</button>
-            </div>
-            
-            <div class="bg-gray-50 p-4 rounded-xl border border-gray-200">
-                <h3 class="font-semibold mb-3">Gestión de Preguntas</h3>
-                <div id="admin-questions-list" class="space-y-2 mb-4 max-h-48 overflow-y-auto">
-                    <!-- Lista de preguntas se inyecta aquí -->
-                </div>
-                
-                <form id="form-add-question" class="space-y-3 border-t pt-4">
-                    <input type="text" id="q-text" class="apple-input w-full text-sm" placeholder="Escribe la pregunta..." required>
-                    <div class="grid grid-cols-2 gap-2">
-                        <input type="text" id="q-opt0" class="apple-input text-sm" placeholder="Opción 1" required>
-                        <input type="text" id="q-opt1" class="apple-input text-sm" placeholder="Opción 2" required>
-                        <input type="text" id="q-opt2" class="apple-input text-sm" placeholder="Opción 3" required>
-                        <input type="text" id="q-opt3" class="apple-input text-sm" placeholder="Opción 4" required>
-                    </div>
-                    <select id="q-correct" class="apple-input w-full text-sm bg-white" required>
-                        <option value="" disabled selected>Selecciona la respuesta correcta</option>
-                        <option value="0">Opción 1</option>
-                        <option value="1">Opción 2</option>
-                        <option value="2">Opción 3</option>
-                        <option value="3">Opción 4</option>
-                    </select>
-                    <button type="submit" class="apple-btn-secondary w-full py-2 text-sm font-semibold">Agregar Pregunta</button>
-                </form>
-            </div>
-
-            <div class="text-center pt-4">
-                <p class="text-sm text-gray-500 mb-2">Participantes en sala: <span id="admin-player-count" class="font-bold">0</span></p>
-                <button id="btn-start-quiz" class="apple-btn-primary w-full py-3 font-semibold text-lg">¡Iniciar Quiz!</button>
-            </div>
-        </div>
-
-        <!-- SALA DE ESPERA (Lobby de Jugadores) -->
-        <div id="view-lobby" class="hidden text-center space-y-6 py-10">
-            <div class="animate-pulse w-16 h-16 bg-blue-100 text-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-            </div>
-            <h2 class="text-2xl font-bold">¡Estás dentro, <span id="lobby-player-name" class="text-blue-500"></span>!</h2>
-            <p class="text-gray-500">Espera a que el moderador inicie el quiz...</p>
-        </div>
-
-        <!-- PANTALLA DE PREGUNTA ACTIVA -->
-        <div id="view-question" class="hidden space-y-6">
-            <div class="flex justify-between items-center text-sm font-semibold text-gray-500 mb-4">
-                <span id="question-counter">Pregunta 1 de X</span>
-                <span id="timer-display" class="text-blue-500 bg-blue-50 px-3 py-1 rounded-full">Tiempo corriendo...</span>
-            </div>
-            
-            <h2 id="active-question-text" class="text-2xl font-bold text-center mb-6">¿Cargando pregunta?</h2>
-            
-            <div id="options-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <!-- Botones de opciones inyectados por JS -->
-            </div>
-
-            <!-- Controles exclusivos del Moderador -->
-            <div id="admin-question-controls" class="hidden border-t pt-6 mt-6 text-center">
-                <p class="text-sm text-gray-500 mb-3">Respuestas recibidas: <span id="answers-count" class="font-bold">0</span></p>
-                <button id="btn-show-results" class="apple-btn-secondary py-2 px-6 font-semibold">Mostrar Resultados</button>
-            </div>
-            
-            <!-- Mensaje para el jugador que ya respondió -->
-            <div id="player-waiting-msg" class="hidden text-center text-gray-500 mt-6 font-medium">
-                Respuesta registrada. Esperando a los demás...
-            </div>
-        </div>
-
-        <!-- PANTALLA DE RESULTADOS (RANKING) -->
-        <div id="view-leaderboard" class="hidden space-y-6">
-            <h2 class="text-2xl font-bold text-center">Resultados de la Pregunta</h2>
-            
-            <!-- Mensaje personal para el jugador -->
-            <div id="player-result-feedback" class="text-center p-4 rounded-xl hidden mb-4 font-semibold text-lg"></div>
-
-            <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
-                <h3 class="font-semibold text-green-600 mb-2 border-b pb-2">✅ Acertaron (Ordenados por rapidez)</h3>
-                <ul id="list-correct" class="space-y-2 text-sm mb-4"></ul>
-                
-                <h3 class="font-semibold text-red-500 mb-2 border-b pb-2">❌ No acertaron</h3>
-                <ul id="list-incorrect" class="space-y-2 text-sm"></ul>
-            </div>
-
-            <!-- Controles exclusivos del Moderador -->
-            <div id="admin-leaderboard-controls" class="hidden text-center pt-4">
-                <button id="btn-next-question" class="apple-btn-primary py-3 px-8 font-semibold">Siguiente Pregunta</button>
-            </div>
-        </div>
-
-        <!-- PANTALLA FINAL (PODIO) -->
-        <div id="view-final" class="hidden text-center space-y-6 py-8">
-            <h1 class="text-4xl font-bold mb-2">¡Quiz Finalizado!</h1>
-            <p class="text-gray-500 mb-6">Gracias por participar.</p>
-            
-            <div class="bg-blue-50 p-6 rounded-2xl border border-blue-100 max-w-sm mx-auto">
-                <h3 class="text-xl font-bold text-blue-800 mb-4">🏆 Ranking Final</h3>
-                <ul id="final-podium" class="space-y-3 text-left">
-                    <!-- Podio inyectado por JS -->
+<!-- Slide 7: Modalidades -->
+<div class="slide-container" id="slide7">
+    <h2 class="slide-title">Modalidades de cesión: universal vs. singular</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="tile tile-blue" style="height: 100%;">
+                <h3><i class="fa-solid fa-globe"></i> A título universal (abstracta)</h3>
+                <p style="margin-top: 15px;">Enajenación de la totalidad o una cuota del derecho (Ej. "vendo mi 50% de la herencia").</p>
+                <ul class="bullet-list" style="margin-top: 15px;">
+                    <li><i class="fa-solid fa-check"></i> El cedente solo responde por su calidad de heredero.</li>
+                    <li><i class="fa-solid fa-check"></i> Registral y jurídicamente es la vía correcta y más segura.</li>
                 </ul>
             </div>
-
-            <!-- Controles de Admin -->
-            <div id="admin-final-controls" class="hidden pt-6">
-                <button id="btn-finish-reset" class="apple-btn-secondary py-2 px-6 font-semibold">Volver al Panel</button>
+            <div class="tile tile-orange" style="height: 100%;">
+                <h3><i class="fa-solid fa-house-user"></i> A título singular (vinculada)</h3>
+                <p style="margin-top: 15px;">Enajenación condicionada sobre un bien determinado del acervo (Ej. Vender "la casa de la abuela").</p>
+                <div class="warning-box" style="margin-top: 20px;">
+                    <p><strong>¡ALTO RIESGO!</strong> Si en la partición el bien específico <em>no se adjudica</em> al cedente, la venta es inoponible al comprador. Es la principal fuente de <strong>falsa tradición</strong>.</p>
+                </div>
             </div>
         </div>
-
     </div>
+</div>
 
-    <!-- Scripts de Firebase -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, doc, setDoc, onSnapshot, getDocs, deleteDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-        // =========================================================================================
-        // 1. CONFIGURACIÓN DE FIREBASE
-        // =========================================================================================
-        // Reemplaza el bloque de 'firebaseConfig' con los datos exactos que te dio Firebase.
-        
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
-            apiKey: "AIzaSyBO9OXrVV-jmiWDR7N6G92dcohmQe-r4lE",
-  authDomain: "carhoot-583f4.firebaseapp.com",
-  projectId: "carhoot-583f4",
-  storageBucket: "carhoot-583f4.firebasestorage.app",
-  messagingSenderId: "457350426512",
-  appId: "1:457350426512:web:11048857807595c793cd15"
-        };
-        
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'mac-quiz-app';
-        // =========================================================================================
-
-        // 2. Estado Global de la Aplicación
-        let currentUser = null;
-        let userRole = null; // 'admin' o 'player'
-        let playerName = "";
-        let globalQuestions = [];
-        let globalPlayers = [];
-        let globalAnswers = [];
-        let currentGameState = { status: 'waiting', questionIndex: 0 };
-        
-        // Listeners para limpiar al salir
-        let unsubState, unsubQuestions, unsubPlayers, unsubAnswers;
-
-        // Referencias base a las colecciones públicas (REGLA 1)
-        const getBasePath = (colName) => collection(db, 'artifacts', appId, 'public', 'data', colName);
-
-        // 3. Autenticación (REGLA 3)
-        const initAuth = async () => {
-            try {
-                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                    await signInWithCustomToken(auth, __initial_auth_token);
-                } else {
-                    await signInAnonymously(auth);
-                }
-            } catch (error) {
-                console.error("Error auth:", error);
-                document.getElementById('loading-text').innerText = "Error de conexión ❌";
-                document.getElementById('loading-error').innerText = "Detalle: " + error.message + "\n\n(Abre la consola con F12 para ver la línea exacta del error)";
-            }
-        };
-
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                currentUser = user;
-                setupRealtimeListeners();
-                switchView('view-home');
-            }
-        });
-
-        // 4. Utilidades de UI
-        const switchView = (viewId) => {
-            const views = ['view-loading', 'view-home', 'view-admin-login', 'view-player-join', 'view-admin-panel', 'view-lobby', 'view-question', 'view-leaderboard', 'view-final'];
-            views.forEach(v => document.getElementById(v).classList.add('hidden'));
-            document.getElementById(viewId).classList.remove('hidden');
-        };
-
-        // 5. Configurar Listeners en Tiempo Real de Firestore
-        const setupRealtimeListeners = () => {
-            if (!currentUser) return;
-
-            // Escuchar el Estado Global del Juego
-            unsubState = onSnapshot(doc(db, 'artifacts', appId, 'public', 'data', 'gameState', 'current'), (docSnap) => {
-                if (docSnap.exists()) {
-                    currentGameState = docSnap.data();
-                    handleGameStateChange();
-                } else {
-                    // Si no existe, lo inicializamos
-                    setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'gameState', 'current'), { status: 'waiting', questionIndex: 0 });
-                }
-            }, (e) => console.error("Error State:", e));
-
-            // Escuchar Preguntas
-            unsubQuestions = onSnapshot(getBasePath('questions'), (snapshot) => {
-                globalQuestions = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
-                // Ordenar por fecha de creación localmente (REGLA 2)
-                globalQuestions.sort((a, b) => a.createdAt - b.createdAt);
-                renderAdminQuestions();
-            }, (e) => console.error("Error Q:", e));
-
-            // Escuchar Jugadores
-            unsubPlayers = onSnapshot(getBasePath('players'), (snapshot) => {
-                globalPlayers = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
-                document.getElementById('admin-player-count').innerText = globalPlayers.length;
-            }, (e) => console.error("Error P:", e));
-
-            // Escuchar Respuestas
-            unsubAnswers = onSnapshot(getBasePath('answers'), (snapshot) => {
-                globalAnswers = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
-                
-                // Actualizar contador para el admin en la vista de pregunta
-                if (userRole === 'admin' && currentGameState.status === 'question') {
-                    const currentAnswers = globalAnswers.filter(a => a.questionIndex === currentGameState.questionIndex);
-                    document.getElementById('answers-count').innerText = `${currentAnswers.length} / ${globalPlayers.length}`;
-                }
-            }, (e) => console.error("Error A:", e));
-        };
-
-        // 6. Lógica de Cambio de Estado (El corazón del tiempo real)
-        const handleGameStateChange = () => {
-            if (!userRole) return; // Aún no ha elegido rol
-
-            const state = currentGameState.status;
-
-            if (state === 'waiting') {
-                if (userRole === 'admin') switchView('view-admin-panel');
-                else if (userRole === 'player') switchView('view-lobby');
-            } 
-            else if (state === 'question') {
-                renderQuestionView();
-                switchView('view-question');
-            } 
-            else if (state === 'leaderboard') {
-                renderLeaderboardView();
-                switchView('view-leaderboard');
-            }
-            else if (state === 'finished') {
-                renderFinalView();
-                switchView('view-final');
-            }
-        };
-
-        // 7. Funciones del Moderador (Admin)
-        document.getElementById('btn-go-admin').addEventListener('click', () => switchView('view-admin-login'));
-        
-        document.getElementById('btn-login-admin').addEventListener('click', () => {
-            const pwd = document.getElementById('input-admin-pwd').value;
-            if (pwd === '107878') {
-                userRole = 'admin';
-                switchView('view-admin-panel');
-            } else {
-                alert("Contraseña incorrecta");
-            }
-        });
-
-        // Agregar Pregunta
-        document.getElementById('form-add-question').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const text = document.getElementById('q-text').value;
-            const options = [
-                document.getElementById('q-opt0').value,
-                document.getElementById('q-opt1').value,
-                document.getElementById('q-opt2').value,
-                document.getElementById('q-opt3').value,
-            ];
-            const correctIndex = parseInt(document.getElementById('q-correct').value);
-            
-            const newDocRef = doc(getBasePath('questions'));
-            await setDoc(newDocRef, {
-                text, options, correctIndex, createdAt: Date.now()
-            });
-            e.target.reset();
-        });
-
-        const renderAdminQuestions = () => {
-            const list = document.getElementById('admin-questions-list');
-            list.innerHTML = globalQuestions.map((q, i) => `
-                <div class="bg-white p-3 rounded-lg shadow-sm border text-sm flex justify-between items-center">
-                    <span class="truncate pr-2"><b>${i+1}.</b> ${q.text}</span>
-                    <button onclick="window.deleteQuestion('${q.id}')" class="text-red-500 hover:text-red-700 font-bold px-2">X</button>
+<!-- Slide 8: Custom Contract Viewer (Resumen de texto) -->
+<div class="slide-container bg-gradient-warm" id="slide8">
+    <h2 class="slide-title">Análisis visual de minutas contractuales</h2>
+    <div class="content-area">
+        <div class="mac-split-view">
+            <!-- Left Card: Cali (Promesa) -->
+            <div class="mac-window">
+                <div class="mac-titlebar">
+                    <div class="mac-buttons"><span class="close"></span><span class="min"></span><span class="max"></span></div>
+                    <div class="mac-title">TrasladoContratoPromesa.pdf (Resumen)</div>
                 </div>
-            `).join('');
-        };
+                <div class="mac-content">
+                    <div class="contract-snippet">
+                        PROMESA COMPRAVENTA DERECHOS HERENCIALES<br><br>
+                        <strong>VENDEDOR:</strong> HORACIO SANCHEZ<br>
+                        <strong>COMPRADOR:</strong> JOSE ALEJANDRO<br><br>
+                        OBJETO: Vender y comprar derechos en porcentaje del <span class="accent-orange">75% del apartamento 102</span>...<br><br>
+                        PRECIO: <span class="accent-orange">$65.000.000</span>
+                    </div>
+                    <p><strong>Cesión singular (riesgosa):</strong> Venta del 75% vinculada a un inmueble. Se hace por "promesa", careciendo de Escritura Pública.</p>
+                </div>
+            </div>
+            
+            <!-- Right Card: Medellín (Escritura) -->
+            <div class="mac-window">
+                <div class="mac-titlebar">
+                    <div class="mac-buttons"><span class="close"></span><span class="min"></span><span class="max"></span></div>
+                    <div class="mac-title">VentaDerechosHerenciales.pdf (Resumen)</div>
+                </div>
+                <div class="mac-content">
+                    <div class="contract-snippet">
+                        ESCRITURA PÚBLICA 6473625 - MEDELLÍN<br><br>
+                        <strong>ACTO:</strong> COMPRAVENTA A <span class="accent-blue">TÍTULO UNIVERSAL</span><br>
+                        <strong>VENDEDOR:</strong> GRACIELA HERNÁNDEZ<br>
+                        <strong>COMPRADOR:</strong> CONSTANZA PÉREZ<br><br>
+                        OBJETO: Transfiere todas las acciones y derechos herenciales en la sucesión...
+                    </div>
+                    <p><strong>Cesión universal (segura):</strong> Vende derechos sobre la abstracción. Cumple solemnidad notarial y garantiza calidad de heredera.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-        // Exponer función de borrar al window para el onclick generado
-        window.deleteQuestion = async (id) => {
-            if(confirm("¿Eliminar pregunta?")) {
-                await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'questions', id));
-            }
-        };
+<!-- Slide 9: NUEVA DIAPOSITIVA - Embebido de PDF Reales -->
+<div class="slide-container bg-gradient" id="slide9">
+    <h2 class="slide-title">Documentos originales (visor PDF)</h2>
+    <div class="content-area">
+        <div class="mac-split-view" style="height: 520px;">
+            <!-- Left Card: Cali (Promesa PDF Real) -->
+            <div class="mac-window">
+                <div class="mac-titlebar">
+                    <div class="mac-buttons"><span class="close"></span><span class="min"></span><span class="max"></span></div>
+                    <div class="mac-title">TrasladoContratodePromesa.pdf</div>
+                </div>
+                <div class="mac-content pdf-viewer">
+                    <!-- Etiqueta iframe para embeber el PDF en la ruta indicada por el usuario -->
+                    <iframe src="TrasladoContratodePromesa.pdf" width="100%" height="100%" style="border: none;">
+                        <p style="padding: 20px; color: white;">Tu navegador no soporta iframes. <a href="TrasladoContratodePromesa.pdf" style="color: #60a5fa;">Haz clic aquí para ver o descargar el PDF.</a></p>
+                    </iframe>
+                </div>
+            </div>
+            
+            <!-- Right Card: Medellín (Escritura PDF Real) -->
+            <div class="mac-window">
+                <div class="mac-titlebar">
+                    <div class="mac-buttons"><span class="close"></span><span class="min"></span><span class="max"></span></div>
+                    <div class="mac-title">Venta de derecos herenciales.pdf</div>
+                </div>
+                <div class="mac-content pdf-viewer">
+                    <!-- Etiqueta iframe para embeber el PDF en la ruta indicada por el usuario -->
+                    <iframe src="Venta de derecos herenciales.pdf" width="100%" height="100%" style="border: none;">
+                        <p style="padding: 20px; color: white;">Tu navegador no soporta iframes. <a href="Venta de derecos herenciales.pdf" style="color: #60a5fa;">Haz clic aquí para ver o descargar el PDF.</a></p>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-        // Controles de Flujo del Juego (Admin)
-        document.getElementById('btn-start-quiz').addEventListener('click', async () => {
-            if (globalQuestions.length === 0) return alert("Agrega al menos una pregunta.");
-            await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'gameState', 'current'), { 
-                status: 'question', 
-                questionIndex: 0, 
-                startTime: Date.now() 
-            });
-        });
+<!-- Slide 10: Table (Comparativo de Casos) -->
+<div class="slide-container" id="slide10">
+    <h2 class="slide-title">Comparativo legal contractual</h2>
+    <div class="content-area">
+        <div class="table-layout">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Elemento técnico</th>
+                        <th>Caso Cali (promesa singular)</th>
+                        <th>Caso Medellín (escritura universal)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Objeto</strong></td>
+                        <td>75% vinculado a un apartamento específico.</td>
+                        <td>Universalidad (todas las acciones abstractas).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Precio</strong></td>
+                        <td>$65.000.000 COP.</td>
+                        <td>$50.000.000 COP.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Garantía / base</strong></td>
+                        <td>Posesión previa del 25% por el comprador.</td>
+                        <td>Calidad legal de hija heredera (Art. 1040 C.C.).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sanción / incumplimiento</strong></td>
+                        <td>Cláusula penal / Arras por $5.000.000.</td>
+                        <td>Saneamiento de lo vendido según la ley.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
-        document.getElementById('btn-show-results').addEventListener('click', async () => {
-            await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'gameState', 'current'), { 
-                ...currentGameState, 
-                status: 'leaderboard' 
-            });
-        });
+<!-- Slide 11: Section_Title (Parte III) -->
+<div class="slide-container centered-slide" id="slide11">
+    <div class="section-title-layout">
+        <hr>
+        <h2>Parte III: Procedimiento procesal</h2>
+        <p>Ponente: Diana Catalina</p>
+    </div>
+</div>
 
-        document.getElementById('btn-next-question').addEventListener('click', async () => {
-            const nextIdx = currentGameState.questionIndex + 1;
-            if (nextIdx >= globalQuestions.length) {
-                await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'gameState', 'current'), { status: 'finished' });
-            } else {
-                await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'gameState', 'current'), { 
-                    status: 'question', 
-                    questionIndex: nextIdx, 
-                    startTime: Date.now() 
-                });
-            }
-        });
-
-        // 8. Funciones del Participante (Jugador)
-        document.getElementById('btn-go-player').addEventListener('click', () => switchView('view-player-join'));
+<!-- Slide 12: Sucesión Procesal -->
+<div class="slide-container" id="slide12">
+    <h2 class="slide-title">Reconocimiento y sucesión procesal</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="tile tile-blue">
+                <h3 class="accent-blue">El tránsito obligatorio</h3>
+                <p>Presentar la escritura de cesión en el juzgado o notaría de la sucesión es el paso crítico para que el derecho abstracto se convierta en dominio material.</p>
+            </div>
+            <div class="tile tile-purple">
+                <h3 class="accent-purple">Artículo 68 del C.G.P.</h3>
+                <p>El juez debe dictar un auto reconociendo al cesionario, quien entra a desplazar procesalmente al heredero original para todos los efectos patrimoniales.</p>
+            </div>
+        </div>
         
-        document.getElementById('btn-join-game').addEventListener('click', async () => {
-            const nameInput = document.getElementById('input-player-name').value.trim();
-            if (!nameInput) return alert("Ingresa tu nombre");
-            
-            playerName = nameInput;
-            userRole = 'player';
-            
-            // Registrar jugador
-            await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'players', currentUser.uid), {
-                name: playerName,
-                score: 0,
-                joinedAt: Date.now()
-            });
+        <div class="warning-box" style="width: 100%; border-radius: 12px; border-left-width: 8px; margin-top: 40px;">
+            <p><i class="fa-solid fa-circle-exclamation" style="color: #ff3b30; margin-right: 10px;"></i>
+            <strong>ADVERTENCIA PROCESAL CRÍTICA:</strong> Si el cesionario <em>no comparece</em> al proceso sucesorio, <strong>la adjudicación de los bienes se hará necesariamente a nombre del cedente original</strong>, dejando al comprador expuesto a fraudes o embargos al heredero.</p>
+        </div>
+    </div>
+</div>
 
-            document.getElementById('lobby-player-name').innerText = playerName;
-            
-            // Si el juego ya empezó, forzamos la actualización de vista
-            handleGameStateChange();
-        });
+<!-- Slide 13: Timeline (Etapas CGP) -->
+<div class="slide-container" id="slide13">
+    <h2 class="slide-title">Participación del cesionario (Código General del Proceso)</h2>
+    <div class="content-area">
+        <div class="timeline-layout">
+            <div class="timeline-line"></div>
+            <div class="timeline-item">
+                <div class="content-wrapper">
+                    <h3>Apertura</h3>
+                    <p>El cesionario puede demandar la apertura de la sucesión si hay negligencia (Art. 488).</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="content-wrapper">
+                    <h3>Inventarios</h3>
+                    <p>Controla la inclusión de activos, pasivos y objeta avalúos (Art. 501).</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="content-wrapper">
+                    <h3>Administración</h3>
+                    <p>Supervisa la gestión del albacea y pide medidas cautelares (Arts. 496-497).</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="content-wrapper">
+                    <h3>Partición</h3>
+                    <p>Aprueba la distribución para que su cuota sea una adjudicación favorable (Art. 507).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-        // 9. Renderizar Vistas Dinámicas
-        const renderQuestionView = () => {
-            const qIndex = currentGameState.questionIndex;
-            const question = globalQuestions[qIndex];
-            
-            if (!question) return;
+<!-- Slide 14: Section_Title (Parte IV) -->
+<div class="slide-container centered-slide" id="slide14">
+    <div class="section-title-layout">
+        <hr>
+        <h2>Parte IV: Patologías registrales</h2>
+        <p>Ponente: Magda</p>
+    </div>
+</div>
 
-            document.getElementById('question-counter').innerText = `Pregunta ${qIndex + 1} de ${globalQuestions.length}`;
-            document.getElementById('active-question-text').innerText = question.text;
-            
-            const optionsContainer = document.getElementById('options-container');
-            optionsContainer.innerHTML = '';
-            
-            document.getElementById('player-waiting-msg').classList.add('hidden');
-            document.getElementById('admin-question-controls').classList.add('hidden');
+<!-- Slide 15: Patologías -->
+<div class="slide-container" id="slide15">
+    <h2 class="slide-title">Patologías en el registro público</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="tile tile-orange" style="height: 100%;">
+                <h3 class="accent-orange">Falsa tradición (columna 6)</h3>
+                <p>Inscripción de una transferencia incompleta. Ocurre al vender derechos sobre un inmueble específico <strong>antes de liquidar la sucesión</strong>. Bloquea créditos y subsidios.</p>
+            </div>
+            <div class="tile tile-red" style="height: 100%;">
+                <h3 class="accent-red">Ruptura del tracto sucesivo</h3>
+                <p>Múltiples ventas informales de "derechos" sin iniciar el juicio sucesorio. Para sanear el dominio, se requiere reconstruir procesalmente toda la cadena de muertos.</p>
+            </div>
+        </div>
+    </div>
+</div>
 
-            if (userRole === 'admin') {
-                // Vista Admin
-                document.getElementById('admin-question-controls').classList.remove('hidden');
-                document.getElementById('answers-count').innerText = '0 / ' + globalPlayers.length;
-                
-                // Mostrar opciones deshabilitadas para el admin
-                question.options.forEach((opt, idx) => {
-                    optionsContainer.innerHTML += `<div class="p-4 bg-gray-100 rounded-xl text-center border font-medium">${opt}</div>`;
-                });
+<!-- Slide 16: Análisis jurisprudencial -->
+<div class="slide-container" id="slide16">
+    <h2 class="slide-title">Análisis jurisprudencial</h2>
+    <div class="content-area">
+        <div class="tiled-content" style="flex-direction: column; gap: 20px;">
+            <div class="tile tile-blue" style="padding: 25px 30px; display: flex; flex-direction: row; align-items: center;">
+                <div class="icon" style="margin-bottom: 0; margin-right: 25px; font-size: 32px;"><i class="fa-solid fa-gavel"></i></div>
+                <div>
+                    <h3 style="margin-top: 0;">Petición de herencia (Tribunal Superior de Bogotá, 2022)</h3>
+                    <p>Martha Cecilia Rojas demandó una partición notarial que la omitió. El Tribunal reconoció que la partición era inoponible a la cesionaria. Acción clave para proteger al comprador frente a mala fe.</p>
+                </div>
+            </div>
+            <div class="tile tile-orange" style="padding: 25px 30px; display: flex; flex-direction: row; align-items: center;">
+                <div class="icon" style="margin-bottom: 0; margin-right: 25px; font-size: 32px;"><i class="fa-solid fa-landmark-dome"></i></div>
+                <div>
+                    <h3 style="margin-top: 0;">Prescripción entre herederos (Sentencia T-291 de 2023)</h3>
+                    <p>Un heredero o cesionario puede pretender la prescripción adquisitiva extraordinaria si realiza actos de <em>"interversión del título"</em> (señor y dueño desconociendo a los demás) por más de 10 años.</p>
+                </div>
+            </div>
+            <div class="tile tile-red" style="padding: 25px 30px; display: flex; flex-direction: row; align-items: center;">
+                <div class="icon" style="margin-bottom: 0; margin-right: 25px; font-size: 32px;"><i class="fa-solid fa-scale-unbalanced"></i></div>
+                <div>
+                    <h3 style="margin-top: 0;">Lesión enorme (Sentencia SC3346 de 2020)</h3>
+                    <p>Si un heredero (o su cesionario) recibe en la partición menos de la mitad de lo que legalmente le correspondía, tiene el interés legítimo para pedir la rescisión y defender el valor de la masa.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-            } else {
-                // Vista Jugador
-                // Comprobar si ya respondió
-                const alreadyAnswered = globalAnswers.find(a => a.uid === currentUser.uid && a.questionIndex === qIndex);
-                
-                if (alreadyAnswered) {
-                    optionsContainer.innerHTML = '';
-                    document.getElementById('player-waiting-msg').classList.remove('hidden');
-                } else {
-                    question.options.forEach((opt, idx) => {
-                        const btn = document.createElement('button');
-                        btn.className = 'p-4 bg-white hover:bg-blue-50 border border-gray-200 rounded-xl text-center font-medium transition-colors shadow-sm';
-                        btn.innerText = opt;
-                        btn.onclick = () => submitAnswer(qIndex, idx, question.correctIndex);
-                        optionsContainer.appendChild(btn);
-                    });
-                }
-            }
-        };
+<!-- Slide 17: Errores (Grid 2x2 animado) -->
+<div class="slide-container" id="slide17">
+    <h2 class="slide-title">Errores comunes a evitar</h2>
+    <div class="content-area">
+        <div class="tiled-content grid-2x2">
+            <div class="tile tile-red">
+                <div class="icon"><i class="fa-solid fa-house-crack"></i></div>
+                <h3>1. Repartir sin sucesión</h3>
+                <p>Creer que por mutuo acuerdo ya se dividieron los lotes. Sin adjudicación legal, perpetúa la falsa tradición.</p>
+            </div>
+            <div class="tile tile-purple">
+                <div class="icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                <h3>2. Ignorar pasivos</h3>
+                <p>Ignorar deudas bancarias o demandas contra el causante, que pueden absorber toda la masa hereditaria.</p>
+            </div>
+            <div class="tile tile-orange">
+                <div class="icon"><i class="fa-solid fa-ring"></i></div>
+                <h3>3. Confundir gananciales</h3>
+                <p>Comprar la porción del cónyuge como "herencia". Técnicamente son bienes propios de la sociedad conyugal.</p>
+            </div>
+            <div class="tile tile-green">
+                <div class="icon"><i class="fa-solid fa-sack-dollar"></i></div>
+                <h3>4. Efecto tributario</h3>
+                <p>Ignorar que la cesión genera ganancia ocasional, retención en la fuente y fuertes derechos notariales.</p>
+            </div>
+        </div>
+    </div>
+</div>
 
-        const submitAnswer = async (qIndex, selectedIndex, correctIndex) => {
-            const isCorrect = selectedIndex === correctIndex;
-            const timeTaken = Date.now() - currentGameState.startTime;
-            
-            // Calcular puntos (Base 1000, pierde puntos según tiempo, max 20 segs para puntuar)
-            let pointsEarned = 0;
-            if (isCorrect) {
-                pointsEarned = Math.max(0, Math.floor(1000 - (timeTaken / 20))); 
-            }
+<!-- Slide 18: Title_Slide (Conclusion) -->
+<div class="slide-container centered-slide bg-gradient" id="slide18">
+    <div class="title-layout">
+        <h1>Conclusiones</h1>
+        <p class="subtitle" style="font-size: 22px;">La venta de derechos herenciales exige una <strong>sincronía perfecta</strong> entre el contrato notarial (escritura) y el procedimiento de liquidación (C.G.P.).</p>
+        <p class="subtitle" style="font-size: 19px; margin-top: 20px;">Solo el reconocimiento procesal oportuno previene el riesgo de la falsa tradición.</p>
+        <div style="margin-top: 60px; color: #86868b; font-size: 18px; font-weight: 500;">
+            Fin de la presentación.
+        </div>
+    </div>
+</div>
 
-            // Ocultar botones inmediatamente localmente
-            document.getElementById('options-container').innerHTML = '';
-            document.getElementById('player-waiting-msg').classList.remove('hidden');
-
-            // Guardar respuesta
-            const answerId = `${currentUser.uid}_${qIndex}`;
-            await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'answers', answerId), {
-                uid: currentUser.uid,
-                name: playerName,
-                questionIndex: qIndex,
-                isCorrect: isCorrect,
-                timeTaken: timeTaken,
-                points: pointsEarned
-            });
-
-            // Actualizar puntaje global del jugador si sumó puntos
-            if (pointsEarned > 0) {
-                const playerRef = doc(db, 'artifacts', appId, 'public', 'data', 'players', currentUser.uid);
-                // Obtenemos el actual localmente para sumar
-                const me = globalPlayers.find(p => p.id === currentUser.uid);
-                const currentScore = me ? me.score : 0;
-                await updateDoc(playerRef, { score: currentScore + pointsEarned });
-            }
-        };
-
-        const renderLeaderboardView = () => {
-            const qIndex = currentGameState.questionIndex;
-            const questionAnswers = globalAnswers.filter(a => a.questionIndex === qIndex);
-            
-            // Separar correctos e incorrectos
-            const correctAnswers = questionAnswers.filter(a => a.isCorrect).sort((a, b) => a.timeTaken - b.timeTaken); // Más rápidos primero
-            const incorrectAnswers = questionAnswers.filter(a => !a.isCorrect);
-
-            // Llenar listas
-            const correctList = document.getElementById('list-correct');
-            if(correctAnswers.length > 0) {
-                correctList.innerHTML = correctAnswers.map((a, i) => `
-                    <li class="flex justify-between items-center bg-green-50 px-3 py-2 rounded">
-                        <span><span class="font-bold mr-2">${i+1}.</span> ${a.name}</span>
-                        <span class="text-xs text-green-700 bg-green-200 px-2 rounded-full">${(a.timeTaken/1000).toFixed(1)}s (+${a.points} pts)</span>
-                    </li>
-                `).join('');
-            } else {
-                correctList.innerHTML = '<li class="text-gray-400 italic">Nadie acertó.</li>';
-            }
-
-            const incorrectList = document.getElementById('list-incorrect');
-            if(incorrectAnswers.length > 0) {
-                incorrectList.innerHTML = incorrectAnswers.map(a => `<li class="px-3 py-1 text-red-600">• ${a.name}</li>`).join('');
-            } else {
-                incorrectList.innerHTML = '<li class="text-gray-400 italic">No hubo fallos.</li>';
-            }
-
-            // Vista Personal
-            const myFeedback = document.getElementById('player-result-feedback');
-            document.getElementById('admin-leaderboard-controls').classList.add('hidden');
-            myFeedback.classList.add('hidden');
-
-            if (userRole === 'admin') {
-                document.getElementById('admin-leaderboard-controls').classList.remove('hidden');
-            } else {
-                myFeedback.classList.remove('hidden', 'bg-green-100', 'text-green-800', 'bg-red-100', 'text-red-800', 'bg-gray-100');
-                const myAnswer = questionAnswers.find(a => a.uid === currentUser.uid);
-                
-                if (!myAnswer) {
-                    myFeedback.innerText = "No respondiste a tiempo ⌛";
-                    myFeedback.classList.add('bg-gray-100', 'text-gray-600');
-                } else if (myAnswer.isCorrect) {
-                    myFeedback.innerText = `¡Correcto! Sumaste ${myAnswer.points} pts 🎉`;
-                    myFeedback.classList.add('bg-green-100', 'text-green-800');
-                } else {
-                    myFeedback.innerText = "Incorrecto 😔";
-                    myFeedback.classList.add('bg-red-100', 'text-red-800');
-                }
-            }
-        };
-
-        const renderFinalView = () => {
-            document.getElementById('admin-final-controls').classList.add('hidden');
-            
-            if (userRole === 'admin') {
-                document.getElementById('admin-final-controls').classList.remove('hidden');
-            }
-
-            // Ordenar jugadores por puntaje
-            const sortedPlayers = [...globalPlayers].sort((a, b) => b.score - a.score);
-            
-            const podium = document.getElementById('final-podium');
-            podium.innerHTML = sortedPlayers.map((p, i) => {
-                let medal = '';
-                if(i === 0) medal = '🥇';
-                else if(i === 1) medal = '🥈';
-                else if(i === 2) medal = '🥉';
-                else medal = `<span class="w-6 inline-block text-center font-bold text-gray-400">${i+1}</span>`;
-
-                return `
-                <li class="flex justify-between items-center bg-white p-3 rounded-xl border border-blue-50 shadow-sm">
-                    <span class="font-medium text-lg">${medal} ${p.name}</span>
-                    <span class="font-bold text-blue-600">${p.score} pts</span>
-                </li>`;
-            }).join('');
-        };
-
-        // Utilidad Admin: Resetear todo para jugar de nuevo
-        const hardResetGame = async () => {
-            if(!confirm("Esto borrará todo el progreso y jugadores de esta sesión. Las preguntas se mantendrán. ¿Continuar?")) return;
-            
-            // Borrar jugadores
-            for (const p of globalPlayers) {
-                await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'players', p.id));
-            }
-            // Borrar respuestas
-            for (const a of globalAnswers) {
-                await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'answers', a.id));
-            }
-            // Reset estado
-            await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'gameState', 'current'), { status: 'waiting', questionIndex: 0 });
-        };
-
-        document.getElementById('btn-reset-game').addEventListener('click', hardResetGame);
-        document.getElementById('btn-finish-reset').addEventListener('click', async () => {
-            await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'gameState', 'current'), { status: 'waiting', questionIndex: 0 });
-        });
-
-        // Botones de volver
-        document.querySelectorAll('.btn-back').forEach(btn => {
-            btn.addEventListener('click', () => switchView('view-home'));
-        });
-
-        // Iniciar App
-        initAuth();
-
-    </script>
 </body>
 </html>
